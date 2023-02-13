@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({src, alt, largeImageURL, openModal}) => {
     return (
-        <li className="ImageGalleryItem" onClick={() => openModal(largeImageURL)}>
-      <img src={src} alt={alt} className="ImageGalleryItem-image" />
+        <li className="ImageGalleryItem" >
+      <img src={src} alt={alt} className="ImageGalleryItem-image" onClick={() => openModal(largeImageURL)}/>
     </li>
   );
 };
