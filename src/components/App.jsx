@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { fetchImages } from './services/api';
-import { Searchbar } from './Searchbar/Searchbar';
+import { Searchbar } from './Searchbar/Searchbar'
 import { Loader } from './Loader/Loader';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
-// import { animateScroll } from 'react-scroll';
+import { animateScroll } from 'react-scroll';
 import { Modal } from './Modal/Modal';
 import { queries } from '@testing-library/react';
 
