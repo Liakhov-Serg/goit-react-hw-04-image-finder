@@ -57,7 +57,30 @@ export class App extends Component {
     });
   };
 
+   onloadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+    this.scrollOnMoreButton();
+  };
+scrollOnMoreButton = () => {
+    animateScroll.scrollToBottom({
+      duration: 1000,
+      delay: 10,
+      smooth: 'linear',
+    });
+  };
+  openModal = largeImageURL => {
+    console.log(largeImageURL);
+    this.setState({
+      showModal: true,
+      largeImageURL: largeImageURL,
+    });
+  };
 
+  closeModal = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
 
 render() {
   const { images, isLoading, loadMore, page, showModal, largeImageURL } =
