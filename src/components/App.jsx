@@ -6,15 +6,48 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 // import { animateScroll } from 'react-scroll';
 import { Modal } from './Modal/Modal';
+import { queries } from '@testing-library/react';
 
 
-class App extends Component {
+export class App extends Component {
   state = {
     searchQuery: '',
     images: [],
     page: 1,
     per_page: 12,
+    isLoading: false,
+    loadMore: false,
+    error: null,
+    showModal: false,
+    largeImageURL: 'largeImageURL',
+    id: null,
+  };
+ 
+  componentDidUpdate() {
+
   }
+
+  getImages = async (query, page) => {
+    this.setState({ isLoading: true });
+    if (!query) {
+      return
+    }
+    try {
+      const { hits, totalHits } = await fetchImages(query, page);
+      console.log(hits, totalHits);
+      this.setState(prevState => ({
+        images: [...prevState.images, ...hits],
+        loadMore: this.state.page < Math.ceil(totalHits / this.state.per_page),
+      }));
+    } catch (error) {
+      this.setState({ error: error.message });
+    } finally {
+      this.setState({ isLoading: false });
+    }
+
+
+  };
+  
 
 
 render() {
@@ -22,7 +55,7 @@ render() {
     this.state;
   return (
     <>
-      {/* <Searchbar onSubmit={this.formSubmit} /> */}
+      <Searchbar onSubmit={this.formSubmit} />
 
       {isLoading ? (
         <Loader />
