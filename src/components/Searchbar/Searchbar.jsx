@@ -9,8 +9,7 @@ export class Searchbar extends Component {
     };
     
     handleChange = e => {
-        // const { name, value } = e.currentTarget;
-        // this.setState({ [name]: value });
+        
         this.setState({ searchQuery: e.currentTarget.value.toLowerCase() });
     };
     
@@ -29,7 +28,7 @@ export class Searchbar extends Component {
                 <form onSubmit={this.handleSubmit} className="SearchForm">
                     <button type="submit" className="SearchForm-button">
                         <span>
-                            <FiSearch size={25} stroke="" />
+                            <FiSearch size={25} stroke="#3f51b5" />
                         </span>
                     </button>
                     <input

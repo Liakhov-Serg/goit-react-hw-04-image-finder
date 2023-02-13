@@ -8,6 +8,7 @@ export const ImageGalleryItem = ({src, alt, largeImageURL, openModal}) => {
     </li>
   );
 };
+
 ImageGalleryItem.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
