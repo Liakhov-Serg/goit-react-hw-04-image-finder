@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 export const ImageGallery = ({ images, openModal }) => (
   <ul className="ImageGallery">
-    {images.map(image => (
+    {images.map(({ id, webformatURL, tags, largeImageURL }) => (
       <ImageGalleryItem
-        key={image.id}
-        src={image.webformatURL}
-        alt={image.tags}
-        largeImageURL={image.largeImageURL}
+        key={id}
+        src={webformatURL}
+        alt={tags}
+        largeImageURL={largeImageURL}
         openModal={openModal}
       />
     ))}
