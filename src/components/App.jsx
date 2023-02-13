@@ -7,8 +7,6 @@ import { Button } from './Button/Button';
 import { animateScroll } from 'react-scroll';
 import { Modal } from './Modal/Modal';
 
-
-
 export class App extends Component {
   state = {
     searchQuery: '',
@@ -24,7 +22,7 @@ export class App extends Component {
   };
  
   componentDidUpdate(_, prevState) {
-console.log(prevState.page);
+    console.log(prevState.page);
     console.log(this.state.page);
     const { searchQuery, page } = this.state;
     if (prevState.searchQuery !== searchQuery || prevState.page !== page) {
@@ -49,8 +47,6 @@ console.log(prevState.page);
     } finally {
       this.setState({ isLoading: false });
     }
-
-
   };
 
   formSubmit = searchQuery => {
@@ -66,13 +62,15 @@ console.log(prevState.page);
     this.setState(prevState => ({ page: prevState.page + 1 }));
     this.scrollOnMoreButton();
   };
-scrollOnMoreButton = () => {
+
+   scrollOnMoreButton = () => {
     animateScroll.scrollToBottom({
       duration: 1000,
       delay: 10,
       smooth: 'linear',
     });
   };
+
   openModal = largeImageURL => {
     console.log(largeImageURL);
     this.setState({
@@ -109,4 +107,4 @@ render() {
   );
   
 }
-};
+}
