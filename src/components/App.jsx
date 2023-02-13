@@ -6,7 +6,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { animateScroll } from 'react-scroll';
 import { Modal } from './Modal/Modal';
-import { queries } from '@testing-library/react';
+
 
 
 export class App extends Component {
@@ -23,8 +23,13 @@ export class App extends Component {
     id: null,
   };
  
-  componentDidUpdate() {
-
+  componentDidUpdate(_, prevState) {
+console.log(prevState.page);
+    console.log(this.state.page);
+    const { searchQuery, page } = this.state;
+    if (prevState.searchQuery !== searchQuery || prevState.page !== page) {
+      this.getImages(searchQuery, page);
+    }
   }
 
   getImages = async (query, page) => {
