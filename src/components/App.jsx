@@ -47,7 +47,16 @@ export class App extends Component {
 
 
   };
-  
+
+  formSubmit = searchQuery => {
+    this.setState({
+      searchQuery,
+      images: [],
+      page: 1,
+      loadMore: false,
+    });
+  };
+
 
 
 render() {
