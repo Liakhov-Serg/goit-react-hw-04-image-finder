@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchImages } from './services/api';
-import { Searchbar } from './Searchbar/Searchbar'
+import { Searchbar } from './Searchbar/Searchbar';
 import { Loader } from './Loader/Loader';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
@@ -20,7 +20,7 @@ export class App extends Component {
     largeImageURL: 'largeImageURL',
     id: null,
   };
- 
+
   componentDidUpdate(_, prevState) {
     console.log(prevState.page);
     console.log(this.state.page);
@@ -33,7 +33,7 @@ export class App extends Component {
   getImages = async (query, page) => {
     this.setState({ isLoading: true });
     if (!query) {
-      return
+      return;
     }
     try {
       const { hits, totalHits } = await fetchImages(query, page);
@@ -58,12 +58,12 @@ export class App extends Component {
     });
   };
 
-   onloadMore = () => {
+  onloadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
     this.scrollOnMoreButton();
   };
 
-   scrollOnMoreButton = () => {
+  scrollOnMoreButton = () => {
     animateScroll.scrollToBottom({
       duration: 1000,
       delay: 10,
@@ -85,26 +85,25 @@ export class App extends Component {
     });
   };
 
-render() {
-  const { images, isLoading, loadMore, page, showModal, largeImageURL } =
-    this.state;
-  return (
-    <>
-      <Searchbar onSubmit={this.formSubmit} />
+  render() {
+    const { images, isLoading, loadMore, page, showModal, largeImageURL } =
+      this.state;
+    return (
+      <>
+        <Searchbar onSubmit={this.formSubmit} />
 
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ImageGallery images={images} openModal={this.openModal} />
-      )}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ImageGallery images={images} openModal={this.openModal} />
+        )}
 
-      {loadMore && <Button onloadMore={this.onloadMore} page={page} />}
+        {loadMore && <Button onloadMore={this.onloadMore} page={page} />}
 
-      {showModal && (
-        <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
-      )}
-    </>
-  );
-  
-}
+        {showModal && (
+          <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
+        )}
+      </>
+    );
+  }
 }

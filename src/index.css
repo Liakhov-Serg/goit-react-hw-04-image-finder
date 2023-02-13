@@ -1,5 +1,5 @@
-@import-normalize; 
-bring in normalize.css styles
+/* * @import-normalize; */ */
+/* bring in normalize.css styles */
 
 /* body {
   margin: 0;
@@ -9,11 +9,11 @@ bring in normalize.css styles
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
 html {
   box-sizing: border-box;
   width: 100vw;
