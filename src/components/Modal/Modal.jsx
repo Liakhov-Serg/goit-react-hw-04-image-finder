@@ -21,6 +21,7 @@ export class Modal extends Component {
   };
 
   handleBackDropClick = e => {
+ 
     if (e.currentTarget === e.target) {
       this.props.onClose();
     }
@@ -40,5 +41,5 @@ export class Modal extends Component {
 
 Modal.propTypes = {
   onClose: PropTypes.func,
-  largeImageUrl: PropTypes.string.isRequired,
+  largeImageUrl: PropTypes.string,
 };
