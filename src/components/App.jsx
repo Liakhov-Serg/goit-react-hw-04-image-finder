@@ -17,7 +17,7 @@ export class App extends Component {
     loadMore: false,
     error: null,
     showModal: false,
-    largeImageURL: '',
+    largeImageURL: 'largeImageURL',
     id: null,
   };
 
